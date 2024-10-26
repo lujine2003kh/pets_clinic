@@ -1,0 +1,14 @@
+const express = require('express');
+const cors = require('cors');
+const routes = express.Router();
+require('dotenv').config();
+const {getUsers,createUser,getUsersNames,deleteUser,UpdateUser,UserLogin,verifyJwtToken,home} = require('../controllers/userConrollers');
+routes.get('/users',getUsers);
+routes.post('/users',createUser);
+routes.delete('/users/:id',deleteUser);
+routes.get('/users/names',getUsersNames);
+routes.put('/users/:id',UpdateUser);
+routes.post('/login',UserLogin);
+routes.get('/jwt',verifyJwtToken);
+routes.get('/home',verifyJwtToken,home);
+module.exports = routes;
