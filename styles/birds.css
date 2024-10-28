@@ -93,27 +93,37 @@
     cursor: pointer;
     outline: none;
   }
-  /* video style */
-  #vid>video{
-    max-width: 900px;
-    width: 1000px;
-    max-height: 500px;
-    height: 900px;
-    margin-left: 250px;
-    margin-top: 50px;
-    padding: 1.051%;
-    background-color:#47bdbd;
-    border-width: thick;
-    border-color: red;
+
+  /* image slider */
+  .carousel,.slide{
+    position:relative;
+    width: 900px;
+    height: 500px;
+    margin-left: 20%;
+    
     }
-    @media screen and (max-width:500px){
-    #vid>video{
-      max-width: 64rem;
-      width: 100%;
-      max-height: 30.875rem;
-      height: 100%;
-      margin: 1.25rem auto;
-      padding: 1.051%;
-      background-color:#56967a;
-      border-width: thick;
-    }}
+    
+    #carouselExampleIndicators{
+        background-color: red;
+        margin-top: 50px;
+    }
+    #carouselExampleIndicators>button{
+        background-color: #8eada9;
+        width: 50px;
+        height: 100px;
+        margin-top: 25%;
+    }
+    #carouselExampleIndicators>.carousel-indicators>button{
+        background-color: #8eada9;
+        
+    }
+    .imgcl{
+        width:100px;
+        height:500px;
+    }
+    img.d-block.w-100.imgcl {
+        border:#1d8d91;
+        border-width: thick;
+        border-style: solid;
+    }
+    
