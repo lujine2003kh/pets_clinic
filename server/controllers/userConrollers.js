@@ -16,28 +16,26 @@ exports.getUsersNames = async (req,res)=>{
     try{
         const users = await User.find();
         console.log('this is a function to get users names')
-        const usernames = users.map(
+        const firstname = users.map(
             user =>{
-                var object={_id:user._id,firstname: user.firstname,lastname:user.lastname,phonenumber:user.phonenumber,password:user.password
-                    ,email:user.user,petsname:user.petsname,
-                };
-                return object;  // return an object with username property
+                var object={_id:user._id,firstname: user.firstname};
+                return object;  // return an object with Firstname property
             }
         );
 
-        res.json(usernames);
+        res.json(firstname);
    }
    catch(error) {
        res.status(500).json({error: error.message});
    }
 }
 exports.createUser = async (req,res)=>{
-    const {username,phone,password}= req.body;
+    const {firstname,lastname,phonenumber,password,email,petsname}= req.body;
     // console.log(username,phone);
 
     try{
         const hashedPassword=await bcrypt.hash(password,10);
-        const newUser={username: username,phone: phone,password:hashedPassword};
+        const newUser={firstname:firstname,lastname:lastname,phonenumber:phonenumber,password:hashedPassword,email:email,petsname:petsname};
         console.log(newUser);
         const dbUser = await User.create(newUser)
         res.status(200).json({message: `User created successfully ${newUser}`});
