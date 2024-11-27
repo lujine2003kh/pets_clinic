@@ -2,16 +2,6 @@ const User = require('../models/userModel');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
-exports.getUsers = async (req,res)=>{
-    try{
-        console.log('this is a function to get users')
-         const users = await User.find();
-         res.json(users);
-    }
-    catch(error) {
-        res.status(500).json({error: error.message});
-    }
-}
 exports.getUsersNames = async (req,res)=>{
     try{
         const users = await User.find();
@@ -45,18 +35,7 @@ exports.createUser = async (req,res)=>{
     }
 }
 
-exports.deleteUser=async(req,res)=>{
-try {
-    const id = req.params.id
-    var deleteUser = await User.findByIdAndDelete({_id:id})
-    res.status(200).json({
-        message:"usere were deleted"    })
 
-
-} catch (error) {
-    res.status(400).json({error: error.message});
-}
-}
 exports.UpdateUser=async(req,res)=>{
     try {
         const id = req.params.id

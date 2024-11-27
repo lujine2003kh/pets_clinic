@@ -1,38 +1,4 @@
 // alert("this is profile");
-var ProfileForm = document.getElementById("registerForm");
-console.log(ProfileForm.children[1]);
-var addData = document.getElementById("addData");
-addData.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var firstname = document.getElementById("firstName").value;
-    var lastname=document.getElementById("lastName").value;
-    var email=document.getElementById("emailAddress").value;
-    var phonenumber = document.getElementById("phoneNumber").value;
-    var password=document.getElementById("password").value;
-    var petsname=document.getElementById("Petsname").value;
-    
-    console.log(firstname,lastname,email,phonenumber,password,petsname);
-    postData(firstname,lastname,email,phonenumber,password,petsname);
-    alert('data were added')
-})
-
-async function postData(firstname,lastname,email,phonenumber,password,petsname){
-    var data = {firstname:firstname,lastname:lastname,phonenumber:phonenumber,password:hashedPassword,email:email,petsname:petsname}
-    await fetch('http://127.0.0.1:4000/api/users',{
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(data)
-    }).then(response=>response.json()).then(
-        data=>{
-            console.log(data)
-        }
-    )
-}
-
-
-var allData = [];
 
 async function getData() {
 await fetch('http://127.0.0.1:5000/api/users',{
