@@ -10,9 +10,10 @@ exports.createUser = async (req,res)=>{
         const newUser={firstname:firstname,lastname:lastname,phonenumber:phonenumber,password:hashedPassword,email:email,petsname:petsname};
         console.log(newUser);
         const dbUser = await User.create(newUser)
-        res.status(200).json({message: `User created successfully ${newUser}`});
+        res.status(200).json({message: `User created successfully `});
     }
     catch(error) {
+        console.log(error)
         res.status(400).json({error: error.message});
     }
 }
