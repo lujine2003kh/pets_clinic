@@ -5,6 +5,8 @@ const cors = require('cors');
 //routes
 const bodyParser = require('body-parser');
 const userRoutes = require('../server/routes/users');
+const registerRotes = require('../server/routes/signupRoutes');
+const loginRouts = require('../server/routes/loginRoutes');
 // database
 const mongoose=require('mongoose');
 // to take var from the .env file 
@@ -19,5 +21,7 @@ connectDB();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api',  userRoutes);
+app.use('/api',  registerRotes);
+app.use('/api',  loginRouts);
 
 module.exports = app;

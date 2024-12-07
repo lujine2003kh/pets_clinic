@@ -1,12 +1,12 @@
-const { error } = require("console");
 
 var registerForm = document.getElementById('form');
-var userEmail = document.getElementById('emailID')
-var password = document.getElementById('passwordID')
+var userEmail = document.getElementsByClassName('mewVl')[0].value
+var password = document.getElementById('passwordID').value
 
 form.addEventListener('submit',function (e){
     e.preventDefault();
     isValidUser=false;
+    console.log(userEmail)
     // for (var i = 0; i < data.length; i++) {
     //     if (emailId === users[i].userEmail && passwordID === users[i].password) {
     //         isValidUser = true;
@@ -18,14 +18,15 @@ form.addEventListener('submit',function (e){
     fetch('http://127.0.0.1:4000/api/users/login',
         {
             method:"POST",
-            headers:"'Content-Type': 'application/json'",
+            headers:{ 'Content-Type': 'application/json',},
+
             body:JSON.stringify({email:userEmail,password:password})
         }
-    )
-    .then(res=>res.json())
+    ).then(response=>response.json())
     .then(data=>{
         console.log(data)
-    }).catch(error)
-        console.log(error)
+        // window.
+    })
+    
     
 })

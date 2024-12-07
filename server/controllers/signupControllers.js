@@ -3,13 +3,14 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 exports.createUser = async (req,res)=>{
     const {firstname,lastname,phonenumber,password,email,petsname}= req.body;
-    // console.log(username,phone);
+    console.log(firstname,phonenumber);
 
     try{
         const hashedPassword=await bcrypt.hash(password,10);
         const newUser={firstname:firstname,lastname:lastname,phonenumber:phonenumber,password:hashedPassword,email:email,petsname:petsname};
         console.log(newUser);
         const dbUser = await User.create(newUser)
+        console.log(dbUser)
         res.status(200).json({message: `User created successfully `});
     }
     catch(error) {

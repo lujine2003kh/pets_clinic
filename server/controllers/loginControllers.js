@@ -1,4 +1,4 @@
-const User = require('../models/login');
+const User = require('../models/signup');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 exports.getUsers = async (req,res)=>{
@@ -12,11 +12,13 @@ exports.getUsers = async (req,res)=>{
     }
 }
 exports.UserLogin=async(req,res)=>{
-    const{username,password}=req.body;
+    const{email,password}=req.body;
+    console.log(email)
     try{
-        const user=await User.findOne({username});
+        const user=await User.findOne({email});
+        console.log(!user)
         if(!user){
-            return res.status(400).json({message:'user not found!'});
+            return res.status(400).json({message:'user not found!!!!'});
         }
         //check pass
         const isMatch=await bcrypt.compare(password,user.password);

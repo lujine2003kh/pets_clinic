@@ -3,7 +3,7 @@ const cors = require('cors');
 const routes = express.Router();
 require('dotenv').config();
 const {createUser,getUsersNames,UpdateUser,UserLogin,verifyJwtToken,home} = require('../controllers/userConrollers');
-routes.post('/createusers',createUser);
+// routes.post('/createusers',createUser);
 routes.get('/users/names',getUsersNames);
 routes.put('/users/:id',UpdateUser);
 routes.post('/login',UserLogin);

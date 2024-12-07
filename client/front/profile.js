@@ -12,42 +12,29 @@ await fetch('http://127.0.0.1:5000/api/users',{
     console.log(data);
     var i = 1;
     data.forEach(element => {
-        var updateButton = document.createElement("button")
+        var updateButton = document.getElementById("updateForm")
         updateButton.className="updateButton"
         updateButton.innerHTML="update"
         updateButton.setAttribute('data-bs-toggle',"modal")
         updateButton.setAttribute('data-bs-target',"#exam pleModal")
         updateButton.onclick=function(){
-            let username=document.getElementById("updateUsername");
-            let phone =document.getElementById("updatePhone");
             let elementId=document.getElementById("updateId");
-            username.value=element.username;
-            phone.value=element.phone;
+            let firstName=document.getElementById("updatefirstName");
+            let lastName =document.getElementById("updatelastName");
+            let emailAddress=document.getElementById("updateemailAddress");
+            let phoneNumber=document.getElementById("updatephoneNumber");
+            let password=document.getElementById("updatepassword");
+            let Petsname=document.getElementById("updatePetsname");
+
             elementId.value=element._id;
+            firstName.value=element.username;
+            lastName.value=element.username;
+            emailAddress.value=element.username;
+            phoneNumber.value=element.username;
+            password.value=element.username;
+            petsname.value=element.phone;
             console.log(username);
         }
-        cell5.append(updateButton)
-        var cell6 = document.createElement("td");
-        var daleteButton = document.createElement("button")
-        daleteButton.onclick=function(){
-            deleteUser(element._id)
-        }
-
-        daleteButton.innerHTML="delete"
-
-        cell6.append(daleteButton)
-        cell4.innerHTML=i;
-        cell1.innerHTML = element._id;
-        cell2.innerHTML = element.username;
-        cell3.innerHTML = element.phone;
-        row.appendChild(cell4);
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
-        row.appendChild(cell5);
-        row.appendChild(cell6);
-        table.children[1].appendChild(row);
-        i++;
 
     allData = data;
     });
